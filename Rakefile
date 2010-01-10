@@ -61,31 +61,25 @@ namespace :test do
   end
 end
 
-#
-# Rubygem creation.
-#
-version = "1.0.5"
-spec = Gem::Specification.new do |spec|
-  spec.platform = Gem::Platform::RUBY
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.platform = Gem::Platform::RUBY
 
-  spec.name = "google4r-checkout"
-  spec.summary = "Ruby library to access the Google Checkout service and implement notification handlers."
-  spec.description = spec.summary
-  spec.version = version
-  spec.author = "Tony Chan"
+    gem.name = "google4r-checkout"
+    gem.summary = "Ruby library to access the Google Checkout service and implement notification handlers."
+    gem.description = gem.summary
+    gem.authors = ["Tony Chan", "Brandon Dimcheff"]
 
-  spec.test_files = FileList['test/**/*_test.rb'] 
-  spec.files      = RUBY_FILES + EXTRA_FILES 
-  spec.extra_rdoc_files = RDOC_EXTRA 
-  spec.files.reject! { |str| str =~ /^\./ } 
-  
-  spec.require_path = 'lib'
-  spec.required_ruby_version = '>= 1.8.4'
-  spec.autorequire = ''
-  
-  spec.add_dependency('money', '>= 1.7.1')
+    gem.test_files = FileList['test/**/*_test.rb'] 
+
+    gem.required_ruby_version = '>= 1.8.4'
+    gem.autorequire = ''
+
+    gem.add_dependency('money', '>= 1.7.1')
+  end
+
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.need_tar = true
-end
