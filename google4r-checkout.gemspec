@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
      "README",
      "Rakefile",
      "VERSION",
+     "google4r-checkout.gemspec",
      "lib/google4r/checkout.rb",
      "lib/google4r/checkout/commands.rb",
      "lib/google4r/checkout/frontend.rb",
